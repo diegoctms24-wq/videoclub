@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="home-container text-center">
+	<h1 class="mb-4">Bienvenido a Videoclub</h1>
+	<div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+		<button class="btn btn-videoclub" onclick="test()">Saludar</button>
+		<button class="btn btn-videoclub" onclick="jsAjax()">Ajax</button>
+		<a href="{{ url_for('logout') }}" class="btn btn-logout">Cerrar sesión</a>
+	</div>
+	<p class="slogan">Tu streaming de video y música</p>
+</div>
+{% endblock %}

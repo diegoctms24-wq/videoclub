@@ -1,0 +1,51 @@
+body{
+    background: #181a20;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.home-container {
+    margin-top: 8px;
+}
+
+.btn-videoclub {
+    background: linear-gradient(90deg, #1e232c 0%, #232a34 100%);
+    color: #f4f4f4;
+    border: 1px solid #232a34;
+    border-radius: 30px;
+    padding: 0.75rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(30,35,44,0.08);
+}
+.btn-videoclub:hover, .btn-videoclub:focus {
+    background: linear-gradient(90deg, #232a34 0%, #1e232c 100%);
+    color: #00e0ff;
+    box-shadow: 0 4px 16px rgba(0,224,255,0.10);
+}
+
+.btn-logout {
+    background: transparent;
+    color: #ff4b5c;
+    border: 1px solid #ff4b5c;
+    border-radius: 30px;
+    padding: 0.75rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn-logout:hover, .btn-logout:focus {
+    background: #ff4b5c;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255,75,92,0.10);
+}
+
+.slogan {
+    color: #b0b3b8;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    letter-spacing: 1px;
+}
