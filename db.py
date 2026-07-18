@@ -3,9 +3,9 @@ import pymysql
 
 # Configura aquí tus datos de conexión
 host = 'sql5.freesqldatabase.com'
-usuario = 'sql5832820'
-contrasena = 'JHtFcZdQ5e'  # Cambia si tienes contraseña
-base_de_datos = 'sql5832820'
+usuario = 'sql5833356'
+contrasena = '55ujASTRDu'  # Cambia si tienes contraseña
+base_de_datos = 'sql5833356'
 
 # Función para obtener la conexión
 def obtener_conexion():
