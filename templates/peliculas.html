@@ -1,7 +1,32 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1>Peliculas</h1>
-<h3>El id de la película es:</h3>
+<div class="home-container">
+	<section class="catalog-header text-center">
+		<h1 class="mb-2">Catalogo de Peliculas</h1>
+		<p class="slogan mb-1">Explora todas las peliculas registradas en tu videoclub.</p>
+	</section>
+
+	<div class="movie-grid catalog-grid">
+		{% for pelicula in peliculas %}
+		<a class="movie-link" href="{{ url_for('pelicula_detalle', id=pelicula.id) }}">
+			<div class="movie-card">
+				{% if pelicula.es_local %}
+				<img src="{{ url_for('static', filename=pelicula.imagen) }}" alt="Poster de {{ pelicula.titulo }}" loading="lazy">
+				{% else %}
+				<img src="{{ pelicula.imagen }}" alt="Poster de {{ pelicula.titulo }}" loading="lazy">
+				{% endif %}
+				<div class="movie-hover-info">
+					<p>{{ pelicula.descripcion }}</p>
+				</div>
+				<div class="movie-info">
+					<h3>{{ pelicula.titulo }}</h3>
+					<p>{{ pelicula.anio }}</p>
+				</div>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+</div>
 
 {% endblock %}

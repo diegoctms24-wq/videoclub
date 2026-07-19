@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HOME</title>
+    <title>Videoclub</title>
     <!-- Bootstrap -->
     <link href="{{url_for('static',filename='css/bt-min.css')}}" rel="stylesheet">
     <script src="{{url_for('static',filename='js/bt-bun.js')}}"></script>
@@ -26,25 +26,31 @@
         {% endwith %}
     </div>
     {% if show_navbar %}
-    <nav class="navbar navbar-expand-lg bg-body-tertiary w-100 sticky-top shadow-sm" style="min-width:100vw;left:0;top:0;z-index:1030;">
-        <div class="container-fluid p-0 m-0">
-            <a class="navbar-brand" href="#">Videoclub</a>
+    <nav class="navbar navbar-expand-lg navbar-videoclub w-100 sticky-top shadow-sm" style="min-width:100vw;left:0;top:0;z-index:1030;">
+        <div class="container-fluid px-3">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/videoclub-logo.svg') }}" alt="Videoclub" class="brand-logo">
+                <span>Videoclub</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link {% if current_page == 'home' %}active{% endif %}" aria-current="page" href="{{ url_for('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/peliculas">Peliculas</a>
+                <a class="nav-link {% if current_page == 'peliculas' %}active{% endif %}" href="{{ url_for('peliculas_lista') }}">Peliculas</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Privicing</a>
+                <a class="nav-link {% if current_page == 'acerca' %}active{% endif %}" href="{{ url_for('acerca_de') }}">Acerca de</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <a class="nav-link {% if current_page == 'apoyar' %}active{% endif %}" href="{{ url_for('apoyar') }}">Apoyar</a>
+                </li>
+                <li class="nav-item nav-logout-item">
+                <a class="nav-link nav-logout" href="{{ url_for('logout') }}">Cerrar sesion</a>
                 </li>
             </ul>
             </div>

@@ -1,13 +1,67 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="home-container text-center">
-	<h1 class="mb-4">Bienvenido a Videoclub</h1>
-	<div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
-		<button class="btn btn-videoclub" onclick="test()">Saludar</button>
-		<button class="btn btn-videoclub" onclick="jsAjax()">Ajax</button>
-		<a href="{{ url_for('logout') }}" class="btn btn-logout">Cerrar sesión</a>
-	</div>
-	<p class="slogan">Tu streaming de video y música</p>
+<div class="home-container">
+	<section class="home-hero">
+		<div>
+			<p class="home-kicker">Panel principal</p>
+			<h1>Bienvenido a Videoclub</h1>
+			<p class="slogan">Administra tu catalogo y agrega nuevas peliculas desde aqui.</p>
+		</div>
+		<div class="home-stat-card">
+			<h2>{{ total_peliculas }}</h2>
+			<p>Peliculas registradas</p>
+			<a href="{{ url_for('peliculas_lista') }}" class="btn btn-videoclub">Ver catalogo completo</a>
+		</div>
+	</section>
+
+	<section class="home-panels">
+		<div class="home-panel">
+			<h3>Agregar pelicula</h3>
+			<form action="{{ url_for('agregar_pelicula') }}" method="POST" class="movie-form">
+				<label for="titulo">Titulo</label>
+				<input id="titulo" name="titulo" type="text" maxlength="140" required>
+
+				<label for="anio">Año</label>
+				<input id="anio" name="anio" type="text" maxlength="4" required>
+
+				<label for="archivo_imagen">Archivo de imagen (opcional)</label>
+				<input id="archivo_imagen" name="archivo_imagen" type="text" placeholder="ej. inception.jpg">
+
+				<label for="descripcion">Descripcion</label>
+				<textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+				<button type="submit" class="btn btn-videoclub">Guardar pelicula</button>
+			</form>
+		</div>
+
+		<div class="home-panel">
+			<div class="d-flex justify-content-between align-items-center mb-3">
+				<h3 class="mb-0">Recientes</h3>
+				<a class="home-link" href="{{ url_for('peliculas_lista') }}">Ir a Peliculas</a>
+			</div>
+
+			<div class="movie-grid home-recent-grid">
+				{% for pelicula in peliculas_recientes %}
+				<a class="movie-link" href="{{ url_for('pelicula_detalle', id=pelicula.id) }}">
+					<div class="movie-card">
+						{% if pelicula.es_local %}
+						<img src="{{ url_for('static', filename=pelicula.imagen) }}" alt="Poster de {{ pelicula.titulo }}" loading="lazy">
+						{% else %}
+						<img src="{{ pelicula.imagen }}" alt="Poster de {{ pelicula.titulo }}" loading="lazy">
+						{% endif %}
+						<div class="movie-hover-info">
+							<p>{{ pelicula.descripcion }}</p>
+						</div>
+						<div class="movie-info">
+							<h3>{{ pelicula.titulo }}</h3>
+							<p>{{ pelicula.anio }}</p>
+						</div>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 </div>
 {% endblock %}
